@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Activity Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello {{ consumer_name }},</h2>
+    <p>Here is your monthly activity report summarizing your service requests:</p>
+
+    <h3>Summary</h3>
+    <ul>
+        <li>Total Requests: {{ total_requests }}</li>
+        <li>Closed Requests: {{ closed_requests }}</li>
+        <li>Pending Requests: {{ pending_requests }}</li>
+    </ul>
+
+    <h3>Service Request Details</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Provider Name</th>
+                <th>Location</th>
+                <th>Request Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in service_requests %}
+            <tr>
+                <td>{{ request.provider }}</td>
+                <td>{{ request.location }}</td>
+                <td>{{ request.request_date }}</td>
+                <td>{{ request.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>Thank you for choosing our services. We look forward to assisting you in the future.</p>
+</body>
+</html>

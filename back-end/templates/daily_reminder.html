@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello {{ provider_name }},</h2>
+    <p>You have pending service requests that need your attention:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Consumer Name</th>
+                <th>Location</th>
+                <th>Request Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in pending_requests %}
+            <tr>
+                <td>{{ request.consumer }}</td>
+                <td>{{ request.location }}</td>
+                <td>{{ request.request_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Please review these requests at your earliest convenience.</p>
+    <p>Thank you!</p>
+</body>
+</html>
